@@ -1,0 +1,155 @@
+/* Shared styles for the auth flow (Splash → Onboarding → Sign In/Up → Role → OTP).
+   Plain CSS (no Tailwind, no CSS modules). Font: Poppins is loaded in index.html. */
+:root {
+  --gg-green: #2a7c13;
+  --gg-green-light: #56c138;
+  --gg-teal: #0f766e;
+  --gg-link: #0059ff;
+  --gg-text: #000;
+  --gg-muted: #7a7a7a;
+  --gg-input: #f6f6f6;
+}
+
+.gg-screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: var(--gg-text);
+  font-family: Poppins, system-ui, sans-serif;
+  overflow: hidden;
+}
+.gg-screen button { font-family: inherit; }
+
+/* ---------- Splash ---------- */
+.gg-splash {
+  background: linear-gradient(180deg, #56c138 0%, #2a7c13 68%);
+  align-items: center;
+  justify-content: center;
+}
+.gg-splash-logo { width: min(399px, 90%); height: auto; margin-top: 40px; animation: gg-pop .7s ease-out both; }
+.gg-splash-cta {
+  position: absolute; left: 50%; bottom: 14%;
+  transform: translateX(-50%);
+  width: 161px; height: 50px; border: 0; border-radius: 100px;
+  background: #fff; color: var(--gg-teal);
+  font-size: 18px; font-weight: 800; cursor: pointer;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, .25);
+  opacity: 0; pointer-events: none; transition: opacity .5s ease;
+}
+.gg-splash-cta.is-visible { opacity: 1; pointer-events: auto; }
+.gg-splash-cta:active { transform: translateX(-50%) scale(.97); }
+@keyframes gg-pop { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
+
+/* ---------- Onboarding ---------- */
+.gg-onb { padding: 0 32px 40px; align-items: center; }
+.gg-onb-skip {
+  position: absolute; top: 24px; right: 30px;
+  background: none; border: 0; padding: 8px;
+  font-size: 13px; font-weight: 600; letter-spacing: .08em; color: #aaa; cursor: pointer;
+}
+.gg-onb-art { margin-top: 188px; width: 246px; height: 244px; animation: gg-fade .35s ease both; }
+.gg-onb-copy { margin-top: auto; text-align: center; animation: gg-fade .35s ease both; }
+.gg-onb-title { margin: 0; font-size: 28px; line-height: 40px; font-weight: 800; }
+.gg-onb-desc { margin: 16px auto 0; max-width: 340px; font-size: 14px; line-height: 21px; font-weight: 300; }
+.gg-dots { display: flex; justify-content: center; gap: 4px; margin: 56px 0 14px; }
+.gg-dot { width: 11px; height: 5px; border: 0; padding: 0; border-radius: 3px; background: #d9d9d9; cursor: pointer; transition: width .25s, background .25s; }
+.gg-dot.is-active { width: 33px; background: var(--gg-teal); }
+.gg-onb-next, .gg-btn {
+  width: 100%; border: 0; border-radius: 16px; background: var(--gg-green); color: #fff;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  font-size: 16px; font-weight: 700;
+}
+.gg-onb-next { height: 60px; }
+.gg-onb-next svg { width: 20px; height: 20px; }
+.gg-onb-next:active, .gg-btn:active { filter: brightness(.92); }
+@keyframes gg-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- Sign in / Sign up ---------- */
+.gg-form-screen { padding: 0 70px; justify-content: center; align-items: stretch; }
+.gg-form-title { margin: 0 0 40px; text-align: center; font-size: 24px; font-weight: 800; }
+.gg-form { display: flex; flex-direction: column; }
+.gg-input {
+  width: 100%; height: 44px; margin-bottom: 14px; padding: 0 16px;
+  border: 1px solid transparent; border-radius: 12px; background: var(--gg-input);
+  font-family: inherit; font-size: 13px; color: #111; outline: none;
+}
+.gg-input::placeholder { color: #777; }
+.gg-input:focus { border-color: var(--gg-green); background: #fff; }
+.gg-forgot { align-self: flex-end; margin: -4px 0 28px; background: none; border: 0; padding: 0; font-size: 12px; color: #666; cursor: pointer; }
+.gg-btn { height: 46px; border-radius: 100px; font-size: 13px; box-shadow: 0 3px 6px rgba(0,0,0,.18); margin-top: 6px; }
+.gg-error { margin: 0 0 10px; font-size: 12px; color: #c62828; }
+.gg-or { display: flex; align-items: center; gap: 10px; margin: 36px 0 12px; font-size: 11px; color: #777; }
+.gg-or::before, .gg-or::after { content: ""; flex: 1; height: 1px; background: #999; }
+.gg-social { display: flex; justify-content: center; gap: 10px; }
+.gg-social button {
+  width: 36px; height: 36px; display: grid; place-items: center;
+  border: 0; border-radius: 8px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.18); cursor: pointer;
+}
+.gg-social svg { width: 20px; height: 20px; }
+.gg-switch { margin: 36px 0 0; text-align: center; font-size: 12px; color: #444; }
+.gg-switch-link { background: none; border: 0; padding: 0; font-size: 12px; color: var(--gg-link); text-decoration: underline; cursor: pointer; }
+
+/* ---------- Role selection ---------- */
+.gg-role { padding: 92px 26px 40px; }
+.gg-role-title { margin: 0; padding: 0 8px; font-size: 26px; line-height: 40px; font-weight: 800; }
+.gg-role-sub { margin: 12px 0 28px; padding: 0 8px; font-size: 13px; line-height: 19px; }
+.gg-role-card {
+  width: 100%; margin-bottom: 24px; padding: 0 16px; height: 104px;
+  display: flex; align-items: center; gap: 16px; text-align: left;
+  background: #fff; border: 1px solid #c9c9c9; border-radius: 18px;
+  box-shadow: 0 3px 6px rgba(0,0,0,.2); cursor: pointer;
+  transition: transform .15s, border-color .15s, box-shadow .15s;
+}
+.gg-role-card:hover { border-color: var(--gg-green); }
+.gg-role-card:active { transform: scale(.985); }
+.gg-role-card:focus-visible { outline: 2px solid var(--gg-green); outline-offset: 2px; }
+.gg-role-icon {
+  flex: none; width: 56px; height: 56px; display: grid; place-items: center;
+  background: #e4f3dd; border: 1px solid #7bbd68; border-radius: 10px;
+}
+.gg-role-icon svg { width: 24px; height: 24px; }
+.gg-role-text { flex: 1; min-width: 0; }
+.gg-role-name { display: block; font-size: 18px; line-height: 24px; font-weight: 700; }
+.gg-role-desc { display: block; margin-top: 2px; font-size: 11px; line-height: 16px; }
+.gg-role-chev { flex: none; width: 20px; height: 20px; color: #aaa; }
+.gg-role-note { margin: auto 0 0; padding-top: 32px; text-align: center; font-size: 12px; color: #777; }
+
+/* ---------- OTP ---------- */
+.gg-otp { padding: 0; }
+.gg-otp-top { padding: 52px 24px 0; }
+.gg-back { display: block; margin: 0 0 10px -8px; padding: 8px; background: none; border: 0; cursor: pointer; }
+.gg-back svg { width: 18px; height: 18px; display: block; }
+.gg-otp-title { margin: 0; font-size: 18px; line-height: 26px; font-weight: 800; }
+.gg-otp-desc { margin: 8px 0 0; font-size: 12px; line-height: 18px; }
+.gg-otp-desc strong { font-weight: 800; }
+.gg-otp-dots { display: flex; justify-content: center; gap: 14px; margin-top: 36px; }
+.gg-otp-dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--gg-green); background: transparent; transition: background .15s; }
+.gg-otp-dot.is-filled { background: var(--gg-green); }
+.gg-otp-status { margin: 22px 0 0; text-align: center; font-size: 12px; color: var(--gg-green); min-height: 18px; }
+.gg-keypad {
+  margin-top: auto; padding: 8px 6px 28px; background: #d1d5db;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 6px;
+}
+.gg-key {
+  height: 48px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #fcfcfe; border: 0; border-radius: 5px; box-shadow: 0 1px 0 #898a8d;
+  color: #000; cursor: pointer;
+}
+.gg-key:active { background: #e3e4e8; }
+.gg-key-n { font-size: 24px; line-height: 26px; }
+.gg-key-l { font-size: 9px; line-height: 10px; font-weight: 700; letter-spacing: .18em; }
+.gg-key.is-ghost { background: transparent; box-shadow: none; }
+.gg-key.is-ghost:active { background: transparent; opacity: .6; }
+.gg-key svg { width: 26px; height: 26px; }
+
+@media (max-width: 440px) {
+  .gg-form-screen { padding: 0 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gg-splash-logo, .gg-onb-art, .gg-onb-copy { animation: none; }
+  .gg-splash-cta, .gg-dot, .gg-role-card { transition: none; }
+}

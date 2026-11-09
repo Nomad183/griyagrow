@@ -1,0 +1,166 @@
+/* Gaya bersama untuk layar staff selain Dashboard (Dashboard tetap pakai Staff.Dashboard.module.css).
+   Warna & font mengikuti dashboard: hijau #2A7C13, Poppins. */
+
+.container {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  background: #fff;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 96px; /* ruang untuk navbar */
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+  overflow-x: hidden;
+}
+.container.hasActions { padding-bottom: 120px; }
+.container button { font-family: inherit; }
+.container button:focus-visible,
+.container input:focus-visible,
+.container textarea:focus-visible,
+.container select:focus-visible { outline: 3px solid #7cc25f; outline-offset: 2px; }
+
+.body { padding: 18px 22px 24px; }
+.h2 { margin: 0 0 12px; font-size: 18px; font-weight: 700; }
+.lead { margin: 0; font-size: 15px; line-height: 1.55; }
+.empty { text-align: center; color: #8e8e93; font-size: 14px; padding: 48px 16px; }
+.empty a { color: #2a7c13; }
+.linkReset { text-decoration: none; color: inherit; }
+
+/* ---------- Top bar ---------- */
+.topbar {
+  padding: 14px 16px 16px; text-align: center; font-weight: 700; font-size: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .1); background: #fff; position: relative; z-index: 2;
+}
+.topbarBack { display: flex; align-items: center; gap: 12px; text-align: left; padding-left: 14px; }
+.backBtn { width: 36px; height: 36px; display: grid; place-items: center; border: 0; background: none; border-radius: 50%; cursor: pointer; }
+.backBtn svg { width: 24px; height: 24px; }
+
+/* ---------- Bottom nav (menggantikan navbar di tiap dashboard) ---------- */
+.navbar {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 440px; height: 80px;
+  background: #fff; box-shadow: 0 -2px 10px rgba(0, 0, 0, .1);
+  display: flex; justify-content: space-around; align-items: center;
+  z-index: 100; padding-bottom: 10px;
+}
+.navItem {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  color: #aeaeb2; font-size: 11px; font-weight: 600; text-decoration: none; min-width: 64px;
+}
+.navActive { color: #2a7c13; }
+
+/* ---------- Segmented control + chips ---------- */
+.seg { display: flex; gap: 6px; padding: 5px; background: #fff; border-radius: 20px; box-shadow: 0 3px 12px rgba(0, 0, 0, .14); }
+.seg button { flex: 1; height: 44px; border: 0; border-radius: 15px; background: none; color: #a5a5a8; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .2s, color .2s; }
+.seg .segOn { background: #2a7c13; color: #fff; }
+.chips { display: flex; gap: 8px; overflow-x: auto; margin: 16px -22px 14px; padding: 2px 22px 4px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; height: 34px; padding: 0 18px; border: 1.5px solid #c9cacd; border-radius: 999px; background: none; color: #8a8a8e; font-weight: 600; font-size: 14px; cursor: pointer; transition: all .2s; }
+.chipOn { background: #2a7c13; border-color: #2a7c13; color: #fff; }
+
+/* ---------- Kartu & item aktivitas ---------- */
+.card { background: #fff; border-radius: 20px; box-shadow: 0 3px 14px rgba(0, 0, 0, .13); }
+.item { display: flex; align-items: center; gap: 14px; padding: 15px 16px; margin-bottom: 14px; }
+.thumb { width: 58px; height: 58px; border-radius: 14px; object-fit: cover; flex: none; background: #eee; }
+.itemMeta { flex: 1; min-width: 0; }
+.itemName { font-weight: 700; font-size: 16px; line-height: 1.25; }
+.itemGrade { font-size: 12px; color: #8e8e93; margin-top: 1px; }
+.itemPrice { font-weight: 700; font-size: 17px; color: #2a7c13; margin-top: 2px; }
+.pill { flex: none; font-size: 12px; font-weight: 700; color: #1f5f0c; background: #d4efc6; border: 1px solid #2a7c13; border-radius: 999px; padding: 3px 14px; }
+.pillLg { font-size: 14px; padding: 6px 20px; }
+.pillWait { background: #fff1d6; border-color: #ac6400; color: #ac6400; }
+.hist { background: #f9fafb; border-radius: 20px; padding: 18px 20px; margin-bottom: 16px; box-shadow: 0 3px 12px rgba(0, 0, 0, .12); }
+.hist b { display: block; font-size: 16px; margin-bottom: 5px; }
+.hist p { margin: 0 0 7px; font-size: 13.5px; }
+.hist small { font-size: 12px; }
+
+/* ---------- Scan ---------- */
+.scanArea { display: block; width: 100%; margin-top: 18px; padding: 34px 20px 28px; text-align: center; border: 2.5px dashed #2a7c13; background: #e4f2dd; border-radius: 30px; cursor: pointer; }
+.scanArea b { font-size: 18px; }
+.scanBox { width: 190px; height: 190px; margin: 0 auto 18px; display: grid; place-items: center; background: #fff; border: 3px solid #2a7c13; border-radius: 30px; color: #2a7c13; position: relative; overflow: hidden; }
+.scanRun::after { content: ''; position: absolute; left: 10%; right: 10%; height: 3px; background: #2a7c13; border-radius: 3px; animation: sweep 1s ease-in-out infinite alternate; }
+@keyframes sweep { from { top: 12%; } to { top: 86%; } }
+@media (prefers-reduced-motion: reduce) { .scanRun::after { animation: none; top: 50%; } }
+
+/* ---------- Form ---------- */
+.panel { margin-top: 20px; padding: 18px 16px; background: #f9fafb; border: 1.5px solid #d1d1d6; border-radius: 24px; }
+.panel h3 { margin: 0 0 12px; font-size: 16px; font-weight: 600; }
+.panelTitle { font-size: 19px !important; font-weight: 700 !important; }
+.input, .select, .textarea { width: 100%; padding: 14px 16px; border: 1.5px solid #b9babd; border-radius: 16px; background: #fff; font-family: inherit; font-size: 15px; color: #000; }
+.textarea { min-height: 96px; resize: none; display: block; }
+.select { appearance: none; }
+.selWrap { position: relative; }
+.selIcon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #6c6c70; pointer-events: none; }
+.field { display: block; margin: 16px 0 8px; font-weight: 600; font-size: 16px; }
+.btn { width: 100%; height: 52px; margin-top: 14px; border: 0; border-radius: 16px; background: #2a7c13; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; }
+.btn:disabled { background: #aeaeb2; cursor: not-allowed; }
+.error { margin: 8px 2px 0; font-size: 13px; color: #c62828; }
+.upload { width: 100%; height: 64px; display: flex; align-items: center; justify-content: center; gap: 10px; border: 2.5px dashed #2a7c13; background: #e0edd8; color: #2a7c13; border-radius: 20px; font-weight: 700; font-size: 16px; cursor: pointer; }
+.uploadCheck { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 8px; background: #2a7c13; color: #fff; }
+.uploadNote { margin: 8px 2px 0; font-size: 13px; color: #8e8e93; }
+.linkBtn { padding: 0; border: 0; background: none; color: #2a7c13; font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer; }
+
+/* ---------- Detail tanaman ---------- */
+.plantCard { position: relative; margin-bottom: 18px; padding: 22px 24px 24px; background: #e3f1dc; border: 1.5px solid #2a7c13; border-radius: 28px; }
+.plantCard b { font-size: 17px; }
+.plantCard p { margin: 2px 0 0; font-size: 14px; }
+.plantCode { margin: 8px 0 12px; font-size: 32px; font-weight: 700; color: #2a7c13; letter-spacing: .5px; }
+.plantBadge { position: absolute; top: 18px; right: 18px; padding: 5px 18px; border-radius: 999px; background: #2a7c13; color: #fff; font-weight: 700; font-size: 14px; }
+.info { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 12px; margin-bottom: 18px; padding: 20px 24px; background: #f9fafb; border: 1.5px solid #d1d1d6; border-radius: 28px; }
+.info small { display: block; font-size: 14px; }
+.info b { font-size: 16px; }
+.actions { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 440px; display: flex; gap: 14px; padding: 12px 22px 20px; background: #fff; z-index: 100; }
+.actions button { flex: 1; height: 56px; border-radius: 18px; font-weight: 700; font-size: 18px; cursor: pointer; }
+.harvest { background: #fff8ee; color: #ac6400; border: 2.5px solid #ac6400; }
+.save { background: #2a7c13; color: #fff; border: 0; }
+
+/* ---------- Rincian pesanan ---------- */
+.orderHead { margin-bottom: 26px; padding: 22px 24px; background: #f9fafb; border: 1.5px solid #d1d1d6; border-radius: 28px; }
+.orderHead h2 { margin: 0; font-size: 22px; font-weight: 700; }
+.orderHead p { margin: 2px 0 0; font-size: 15px; }
+.orderRow { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1.5px solid #d1d1d6; font-size: 17px; }
+.kv { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 18px; font-size: 15px; }
+.kv b { text-align: right; }
+.total { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; border-top: 1.5px solid #d1d1d6; font-size: 22px; font-weight: 700; }
+.total span:last-child { color: #2a7c13; }
+.note { margin: -8px 0 0; padding: 20px; border: 1.5px solid #b9babd; border-radius: 24px; background: #f9fafb; font-size: 15px; line-height: 1.55; text-align: justify; }
+
+/* ---------- Profil ---------- */
+.profileHero { padding: 44px 24px 34px; text-align: center; background: #2a7c13; color: #fff; border-radius: 0 0 40px 40px; margin-top: -1px; }
+.avatar { width: 112px; height: 112px; margin: 0 auto 20px; display: grid; place-items: center; border-radius: 50%; background: #fff; color: #77c25a; font-size: 50px; font-weight: 700; }
+.profileName { font-size: 24px; font-weight: 700; }
+.profileEmail { margin-top: 2px; font-size: 16px; }
+.menu { display: flex; align-items: center; gap: 18px; width: 100%; margin-bottom: 14px; padding: 20px; border: 0; background: #fff; text-align: left; color: #6f6f73; font-weight: 500; font-size: 16px; cursor: pointer; }
+.menu span { flex: 1; }
+.logout { width: 100%; margin-top: 22px; padding: 20px; border: 2px solid #ff3b3b; border-radius: 24px; background: #ffe0e0; color: #ff3b3b; font-weight: 700; font-size: 20px; cursor: pointer; }
+
+/* ---------- Isi bottom sheet ---------- */
+.row { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; }
+.row span { color: #8e8e93; }
+.row b { text-align: right; }
+.faq { border-bottom: 1px solid #eee; }
+.faq button { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border: 0; background: none; text-align: left; font-weight: 600; font-size: 15px; cursor: pointer; }
+.faq p { margin: 0 0 14px; font-size: 14px; line-height: 1.55; color: #555; }
+.sheetText { margin: 0 0 16px; color: #555; font-size: 15px; }
+.two { display: flex; gap: 12px; }
+.two button { flex: 1; height: 50px; border-radius: 14px; font-weight: 700; font-size: 16px; cursor: pointer; }
+.ghost { background: none; border: 2px solid #c9cacd; color: #555; }
+.danger { background: #ff3b3b; border: 0; color: #fff; }
+.notif { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; padding: 14px; background: #f9fafb; border: 1.5px solid #d1d1d6; border-radius: 18px; }
+.notif b { display: block; font-size: 15px; }
+.notif small { font-size: 13px; color: #8e8e93; }
+.notifDot { flex: none; width: 10px; height: 10px; margin-top: 7px; border-radius: 50%; background: #ffb020; }
+.notifRead { background: #cfcfd2; }
+
+/* ---------- Lonceng di header Dashboard & toast ---------- */
+.bellReset { background: none; border: 0; padding: 0; cursor: pointer; }
+.bellDot { position: absolute; top: -2px; right: -2px; width: 10px; height: 10px; border-radius: 50%; background: #ffb020; border: 2px solid #2a7c13; }
+.toast {
+  position: fixed; left: 50%; bottom: 100px; transform: translateX(-50%); z-index: 300;
+  max-width: 86%; padding: 12px 20px; border-radius: 14px; background: #1b1b1b; color: #fff;
+  font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .3); animation: pop .25s ease-out both;
+}
+@keyframes pop { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@media (prefers-reduced-motion: reduce) { .toast { animation: none; } }
